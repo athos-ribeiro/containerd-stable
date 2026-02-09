@@ -1,3 +1,11 @@
+containerd-stable (2.1.6-0ubuntu1) resolute; urgency=medium
+
+  * New upstream version 2.1.6
+  * d/copyright: update copyright data
+  * d/s/lintian-overrides: silence vendoring related warnings
+
+ -- Athos Ribeiro <athos@ubuntu.com>  Tue, 13 Jan 2026 16:29:54 -0300
+
 containerd-stable (2.1.5-0ubuntu1) resolute; urgency=medium
 
   * d/watch: use Github API to access older releases
