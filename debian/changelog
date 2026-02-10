@@ -1,3 +1,9 @@
+containerd-stable (2.1.6-0ubuntu1~25.10.1) questing; urgency=medium
+
+  * Backport from resolute to questing (LP: #2127661)
+
+ -- Athos Ribeiro <athos@ubuntu.com>  Tue, 10 Feb 2026 11:26:39 -0300
+
 containerd-stable (2.1.6-0ubuntu1) resolute; urgency=medium
 
   * New upstream version 2.1.6
