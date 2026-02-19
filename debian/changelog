@@ -1,3 +1,11 @@
+containerd-stable (2.2.1-0ubuntu1) resolute; urgency=medium
+
+  * New upstream version 2.2.1
+  * d/containerd-stable.docs: update NOTICE files
+  * d/copyright: update copyright data
+
+ -- Athos Ribeiro <athos@ubuntu.com>  Thu, 19 Feb 2026 08:02:39 -0300
+
 containerd-stable (2.1.6-0ubuntu1) resolute; urgency=medium
 
   * New upstream version 2.1.6
