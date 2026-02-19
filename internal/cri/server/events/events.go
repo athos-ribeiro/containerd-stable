@@ -244,7 +244,7 @@ func (b *backOff) enBackOff(key string, evt interface{}) {
 	b.queuePool[key] = newBackOffQueue([]interface{}{evt}, b.minDuration, b.clock)
 }
 
-// enBackOff get out the whole queue
+// deBackOff get out the whole queue
 func (b *backOff) deBackOff(key string) *backOffQueue {
 	b.queuePoolMu.Lock()
 	defer b.queuePoolMu.Unlock()
@@ -259,10 +259,7 @@ func (b *backOff) reBackOff(key string, events []interface{}, oldDuration time.D
 	b.queuePoolMu.Lock()
 	defer b.queuePoolMu.Unlock()
 
-	duration := 2 * oldDuration
-	if duration > b.maxDuration {
-		duration = b.maxDuration
-	}
+	duration := min(2*oldDuration, b.maxDuration)
 	b.queuePool[key] = newBackOffQueue(events, duration, b.clock)
 }
 

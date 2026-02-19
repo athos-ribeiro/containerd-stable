@@ -244,7 +244,7 @@ version = 3
     use_local_image_pull = false
 
     [plugins.'io.containerd.cri.v1.images'.pinned_images]
-      sandbox = 'registry.k8s.io/pause:3.10'
+      sandbox = 'registry.k8s.io/pause:3.10.1'
 
     [plugins.'io.containerd.cri.v1.images'.registry]
       config_path = ''
@@ -372,7 +372,7 @@ version = 2
   selinux_category_range = 1024
 
   # sandbox_image is the image used by sandbox container.
-  sandbox_image = "registry.k8s.io/pause:3.10"
+  sandbox_image = "registry.k8s.io/pause:3.10.1"
 
   # stats_collect_period is the period (in seconds) of snapshots stats collection.
   stats_collect_period = 10
@@ -434,15 +434,15 @@ version = 2
   # enable_unprivileged_ports configures net.ipv4.ip_unprivileged_port_start=0
   # for all containers which are not using host network
   # and if it is not overwritten by PodSandboxConfig
-  # Note that currently default is set to disabled but target change it in future, see:
+  # Note that before containerd v2.0, this value defaulted to false.
   #   [k8s discussion](https://github.com/kubernetes/kubernetes/issues/102612)
-  enable_unprivileged_ports = false
+  enable_unprivileged_ports = true
 
   # enable_unprivileged_icmp configures net.ipv4.ping_group_range="0 2147483647"
   # for all containers which are not using host network, are not running in user namespace
   # and if it is not overwritten by PodSandboxConfig
-  # Note that currently default is set to disabled but target change it in future together with enable_unprivileged_ports
-  enable_unprivileged_icmp = false
+  # Note that before containerd v2.0, this value defaulted to false.
+  enable_unprivileged_icmp = true
 
   # enable_cdi enables support of the Container Device Interface (CDI)
   # For more details about CDI and the syntax of CDI Spec files please refer to
@@ -708,7 +708,8 @@ version = 2
     #
     # *** registry.configs and registry.mirrors that were a part of containerd 1.4
     # are now DEPRECATED and will only be used if the config_path is not specified.
-    config_path = ""
+    # It is an error to specify both config_path and the deprecated configs or mirrors
+    config_path = "/etc/containerd/certs.d:/etc/docker/certs.d"
 ```
 
 </p>
